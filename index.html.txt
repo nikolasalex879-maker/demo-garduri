@@ -1,0 +1,123 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Shield, Users, Clock, Award, Wrench, HeartHandshake, ArrowRight } from "lucide-react";
+import PageHero from "../components/shared/PageHero";
+
+const values = [
+  { icon: Shield, title: "10+ Ani Experiență", desc: "Proiecte diverse finalizate cu succes, de la reparații rapide la montaj complet." },
+  { icon: Users, title: "800+ Clienți Mulțumiți", desc: "Familii și companii care au ales Max Acoperișuri pentru protecția lor." },
+  { icon: Wrench, title: "Profesioniști Dedicați", desc: "Specialiști calificați cu experiență în domeniu și atenție la detalii." },
+  { icon: Clock, title: "Răspuns Rapid", desc: "Intervenții de urgență și finalizare în termenul stabilit." },
+  { icon: Award, title: "Garanție Reală", desc: "Garanție pentru lucrări și materiale, pentru liniștea ta pe termen lung." },
+  { icon: HeartHandshake, title: "Transparență Totală", desc: "Consultanță înainte și după finalizarea proiectului." },
+];
+
+export default function DespreNoi() {
+  return (
+    <>
+      <PageHero
+        label="Despre Noi"
+        title={<>Construim<br /><span className="text-primary">Încredere</span></>}
+        subtitle="La Max Acoperișuri, credem că fiecare casă merită protecție de încredere și un acoperiș construit pentru a rezista ani la rând."
+      />
+
+      {/* Story Section */}
+      <section className="py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <img
+                src="https://media.base44.com/images/public/69d3bdcfcf8545f141a02936/07874adc4_generated_555cf687.png"
+                alt="Proiect finalizat Max Acoperiș"
+                className="w-full h-80 lg:h-[500px] object-cover"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <span className="text-primary text-xs uppercase tracking-[0.3em] font-semibold">
+                Povestea Noastră
+              </span>
+              <h2 className="mt-4 text-3xl lg:text-4xl font-bold uppercase tracking-tight mb-6">
+                Experiență Solidă Construită În Timp
+              </h2>
+              <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <p>
+                  Cu peste 10 ani de experiență în domeniul construcțiilor și al sistemelor de acoperișuri, 
+                  am devenit un nume respectat pe piață datorită profesionalismului, seriozității și calității lucrărilor noastre.
+                </p>
+                <p>
+                  Am finalizat cu succes proiecte diverse — de la reparații rapide ale acoperișului, 
+                  până la renovări complete, montaj de acoperișuri noi, hidroizolații, termoizolații, 
+                  sisteme de jgheaburi și burlane.
+                </p>
+                <p>
+                  Misiunea noastră este să oferim servicii de cea mai înaltă calitate, transparente și eficiente. 
+                  Vrem ca fiecare client să se simtă în siguranță și mulțumit de alegerea făcută.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values Grid */}
+      <section className="py-16 lg:py-24 bg-card border-y border-border">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <span className="text-primary text-xs uppercase tracking-[0.3em] font-semibold">
+            Valori
+          </span>
+          <h2 className="mt-4 text-3xl lg:text-5xl font-bold uppercase tracking-tight mb-16">
+            De Ce Să Alegi<br /><span className="text-primary">Max Acoperișuri</span>
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
+            {values.map((v, i) => (
+              <motion.div
+                key={v.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="bg-card p-8 lg:p-10"
+              >
+                <v.icon className="w-8 h-8 text-primary mb-6" />
+                <h3 className="font-bold text-lg uppercase mb-3">{v.title}</h3>
+                <p className="text-muted-foreground text-sm leading-relaxed">{v.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 lg:py-24 text-center">
+        <div className="max-w-3xl mx-auto px-6">
+          <h2 className="text-3xl lg:text-5xl font-black uppercase tracking-tight mb-6">
+            Pregătit Să<br /><span className="text-primary">Începem?</span>
+          </h2>
+          <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
+            Contactează-ne pentru o evaluare gratuită și o ofertă adaptată proiectului tău.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-10 py-5 text-sm uppercase tracking-[0.15em] font-bold hover:bg-primary/80 transition-all"
+          >
+            Contactează-ne
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </section>
+    </>
+  );
+}
