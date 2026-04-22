@@ -1,123 +1,1013 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { Shield, Users, Clock, Award, Wrench, HeartHandshake, ArrowRight } from "lucide-react";
-import PageHero from "../components/shared/PageHero";
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MetalPro Garduri & Confecții Metalice</title>
+  <link href__="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-const values = [
-  { icon: Shield, title: "10+ Ani Experiență", desc: "Proiecte diverse finalizate cu succes, de la reparații rapide la montaj complet." },
-  { icon: Users, title: "800+ Clienți Mulțumiți", desc: "Familii și companii care au ales Max Acoperișuri pentru protecția lor." },
-  { icon: Wrench, title: "Profesioniști Dedicați", desc: "Specialiști calificați cu experiență în domeniu și atenție la detalii." },
-  { icon: Clock, title: "Răspuns Rapid", desc: "Intervenții de urgență și finalizare în termenul stabilit." },
-  { icon: Award, title: "Garanție Reală", desc: "Garanție pentru lucrări și materiale, pentru liniștea ta pe termen lung." },
-  { icon: HeartHandshake, title: "Transparență Totală", desc: "Consultanță înainte și după finalizarea proiectului." },
-];
+    :root {
+      --bone: #F5F4F0;
+      --carbon: #1A1A1A;
+      --copper: #7B3F00;
+      --aluminum: #D1D1D1;
+      --copper-light: #A0520A;
+    }
 
-export default function DespreNoi() {
-  return (
-    <>
-      <PageHero
-        label="Despre Noi"
-        title={<>Construim<br /><span className="text-primary">Încredere</span></>}
-        subtitle="La Max Acoperișuri, credem că fiecare casă merită protecție de încredere și un acoperiș construit pentru a rezista ani la rând."
-      />
+    html { scroll-behavior: smooth; }
 
-      {/* Story Section */}
-      <section className="py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <img
-                src="https://media.base44.com/images/public/69d3bdcfcf8545f141a02936/07874adc4_generated_555cf687.png"
-                alt="Proiect finalizat Max Acoperiș"
-                className="w-full h-80 lg:h-[500px] object-cover"
-              />
-            </motion.div>
+    body {
+      background: var(--bone);
+      color: var(--carbon);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <span className="text-primary text-xs uppercase tracking-[0.3em] font-semibold">
-                Povestea Noastră
-              </span>
-              <h2 className="mt-4 text-3xl lg:text-4xl font-bold uppercase tracking-tight mb-6">
-                Experiență Solidă Construită În Timp
-              </h2>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  Cu peste 10 ani de experiență în domeniul construcțiilor și al sistemelor de acoperișuri, 
-                  am devenit un nume respectat pe piață datorită profesionalismului, seriozității și calității lucrărilor noastre.
-                </p>
-                <p>
-                  Am finalizat cu succes proiecte diverse — de la reparații rapide ale acoperișului, 
-                  până la renovări complete, montaj de acoperișuri noi, hidroizolații, termoizolații, 
-                  sisteme de jgheaburi și burlane.
-                </p>
-                <p>
-                  Misiunea noastră este să oferim servicii de cea mai înaltă calitate, transparente și eficiente. 
-                  Vrem ca fiecare client să se simtă în siguranță și mulțumit de alegerea făcută.
-                </p>
-              </div>
-            </motion.div>
-          </div>
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(245,244,240,0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--aluminum);
+      padding: 0 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+
+    .nav-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--carbon);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--copper); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--carbon);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--copper); }
+
+    .nav-cta {
+      background: var(--carbon);
+      color: var(--bone) !important;
+      padding: 0.5rem 1.25rem;
+      border-radius: 2px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--copper) !important; color: var(--bone) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      padding-top: 68px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 8vw 6vw 8vw 8vw;
+      border-right: 1px solid var(--aluminum);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.8rem, 5vw, 5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: var(--carbon);
+      margin-bottom: 2rem;
+    }
+
+    .hero-title span { color: var(--copper); display: block; }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 420px;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-primary {
+      background: var(--copper);
+      color: var(--bone);
+      padding: 0.875rem 2rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: #5a2e00; transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--carbon);
+      padding: 0.875rem 2rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 2px solid var(--carbon);
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .btn-outline:hover { background: var(--carbon); color: var(--bone); }
+
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .hero-right:hover img { transform: scale(1.04); }
+
+    .hero-badge {
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+      background: var(--carbon);
+      color: var(--bone);
+      padding: 1rem 1.5rem;
+      font-family: 'Space Grotesk', sans-serif;
+    }
+
+    .hero-badge strong { display: block; font-size: 2rem; font-weight: 800; color: var(--copper); }
+    .hero-badge span { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; }
+
+    /* ── DIVIDER ── */
+    .section-divider {
+      height: 1px;
+      background: var(--aluminum);
+      margin: 0 8vw;
+    }
+
+    /* ── SECTION HEADER ── */
+    .section-header {
+      padding: 6rem 8vw 3rem;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      max-width: 600px;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: #666;
+      max-width: 380px;
+      text-align: right;
+    }
+
+    /* ── SERVICES GRID ── */
+    .services-grid {
+      padding: 2rem 8vw 6rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1px;
+      background: var(--aluminum);
+      border: 1px solid var(--aluminum);
+      margin: 0 8vw;
+    }
+
+    .service-card {
+      background: var(--bone);
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.35s ease;
+    }
+
+    .service-card:hover { z-index: 2; }
+
+    .service-card-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+      filter: grayscale(20%);
+    }
+
+    .service-card:hover .service-card-img {
+      transform: scale(0.97);
+      filter: grayscale(0%);
+    }
+
+    .service-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(123,63,0,0.0) 0%, transparent 60%);
+      transition: background 0.4s ease;
+      pointer-events: none;
+    }
+
+    .service-card:hover .service-card-overlay {
+      background: linear-gradient(to top, rgba(123,63,0,0.25) 0%, transparent 60%);
+    }
+
+    .service-card-body {
+      padding: 1.5rem;
+      border-top: 1px solid var(--aluminum);
+    }
+
+    .service-card-number {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--copper);
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .service-card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+      transition: color 0.2s;
+    }
+
+    .service-card:hover .service-card-title { color: var(--copper); }
+
+    .service-card-desc {
+      font-size: 0.88rem;
+      color: #666;
+      line-height: 1.65;
+    }
+
+    .service-card-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.25rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--copper);
+      text-decoration: none;
+      transition: gap 0.2s;
+    }
+
+    .service-card-arrow:hover { gap: 0.75rem; }
+
+    /* ── WHY US ── */
+    .why-us {
+      padding: 6rem 8vw;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      border-top: 1px solid var(--aluminum);
+      border-bottom: 1px solid var(--aluminum);
+    }
+
+    .why-us-left .section-label { margin-bottom: 0.75rem; }
+
+    .why-us-left .section-title { font-size: clamp(1.8rem, 2.5vw, 2.8rem); margin-bottom: 1.5rem; }
+
+    .why-us-left p { font-size: 1rem; color: #555; line-height: 1.75; margin-bottom: 2rem; }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--aluminum);
+      border: 1px solid var(--aluminum);
+      margin-top: 2rem;
+    }
+
+    .stat-item {
+      background: var(--bone);
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--copper);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #888;
+      margin-top: 0.25rem;
+    }
+
+    .why-us-right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--aluminum);
+    }
+
+    .feature-item {
+      background: var(--bone);
+      padding: 2rem 1.5rem;
+    }
+
+    .feature-icon {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .feature-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-desc {
+      font-size: 0.85rem;
+      color: #777;
+      line-height: 1.6;
+    }
+
+    /* ── CONTACT / QUOTE ── */
+    .quote-section {
+      padding: 7rem 8vw;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .quote-left .section-title { font-size: clamp(1.8rem, 2.5vw, 2.8rem); margin-bottom: 1.5rem; }
+    .quote-left p { font-size: 1rem; color: #555; line-height: 1.75; margin-bottom: 2rem; }
+
+    .contact-info { display: flex; flex-direction: column; gap: 1rem; }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--carbon);
+      color: var(--bone);
+    }
+
+    .contact-item-icon { font-size: 1.2rem; color: var(--copper); }
+
+    .contact-item-text { font-size: 0.9rem; }
+    .contact-item-text strong { display: block; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: #aaa; margin-bottom: 0.2rem; }
+
+    .quote-form { display: flex; flex-direction: column; gap: 1.25rem; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+
+    .form-group label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #888;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      background: transparent;
+      border: 1px solid var(--aluminum);
+      border-bottom: 2px solid var(--carbon);
+      padding: 0.75rem 1rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--carbon);
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--copper);
+      border-bottom-color: var(--copper);
+    }
+
+    .form-group textarea { min-height: 120px; resize: vertical; }
+
+    .form-submit {
+      background: var(--copper);
+      color: var(--bone);
+      border: none;
+      padding: 1rem 2.5rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      align-self: flex-start;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .form-submit:hover { background: #5a2e00; transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--carbon);
+      color: var(--bone);
+      padding: 4rem 8vw 2rem;
+      border-top: 3px solid var(--copper);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand-name span { color: var(--copper); }
+
+    .footer-brand-desc {
+      font-size: 0.875rem;
+      color: #aaa;
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .footer-col-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+
+    .footer-col ul li a {
+      font-size: 0.875rem;
+      color: #bbb;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover { color: var(--bone); }
+
+    .footer-bottom {
+      border-top: 1px solid #333;
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-right { height: 350px; }
+      .hero-left { padding: 3rem 6vw; border-right: none; border-bottom: 1px solid var(--aluminum); }
+      .nav-links { display: none; }
+      .section-header { flex-direction: column; align-items: flex-start; }
+      .section-subtitle { text-align: left; }
+      .services-grid { margin: 0 4vw; padding: 2rem 4vw 4rem; grid-template-columns: 1fr; }
+      .why-us { grid-template-columns: 1fr; gap: 3rem; }
+      .why-us-right { grid-template-columns: 1fr 1fr; }
+      .quote-section { grid-template-columns: 1fr; gap: 3rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .section-header { padding: 4rem 6vw 2rem; }
+    }
+
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .stats-row { grid-template-columns: 1fr; }
+    }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26,26,26,0.85);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .modal-overlay.active { display: flex; }
+
+    .modal-box {
+      background: var(--bone);
+      max-width: 700px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-header {
+      padding: 2rem;
+      border-bottom: 1px solid var(--aluminum);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--carbon);
+      line-height: 1;
+    }
+
+    .modal-img { width: 100%; height: 320px; object-fit: cover; }
+
+    .modal-body { padding: 2rem; }
+
+    .modal-body p { font-size: 1rem; color: #555; line-height: 1.75; margin-bottom: 1.5rem; }
+
+    .modal-cta {
+      display: inline-block;
+      background: var(--copper);
+      color: var(--bone);
+      padding: 0.875rem 2rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s;
+    }
+
+    .modal-cta:hover { background: #5a2e00; }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════ NAV ══════════════════════════════ -->
+<nav>
+  <a href__="#" class="nav-logo">Metal<span>Pro</span></a>
+  <ul class="nav-links">
+    <li><a href__="#servicii">Servicii</a></li>
+    <li><a href__="#despre">Despre</a></li>
+    <li><a href__="#contact">Contact</a></li>
+    <li><a href__="#contact" class="nav-cta">Cerere Ofertă</a></li>
+  </ul>
+</nav>
+
+<!-- ══════════════════════════════ HERO ══════════════════════════════ -->
+<section class="hero">
+  <div class="hero-left reveal">
+    <p class="hero-eyebrow">Confecții Metalice & Garduri Premium</p>
+    <h1 class="hero-title">
+      Definim<span>Spațiul Tău.</span>
+    </h1>
+    <p class="hero-desc">
+      Soluții complete de garduri, porți și confecții metalice pentru proprietăți rezidențiale și industriale. Calitate fără compromis, executat de meșteri cu experiență de peste 15 ani.
+    </p>
+    <div class="hero-actions">
+      <a href__="#servicii" class="btn-primary">Descoperă Serviciile</a>
+      <a href__="#contact" class="btn-outline">Cerere Ofertă</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://media.base44.com/images/public/69e8afe87bb0f0fcee925841/2ba70a98f_generated_image.png" alt="Gard Fier Forjat Premium"/>
+    <div class="hero-badge">
+      <strong>15+</strong>
+      <span>Ani Experiență</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ SERVICII ══════════════════════════════ -->
+<section id="servicii">
+  <div class="section-header reveal">
+    <div>
+      <p class="section-label">Portofoliu Complet</p>
+      <h2 class="section-title">Tot ce ai nevoie pentru perimetrul tău</h2>
+    </div>
+    <p class="section-subtitle">13 categorii de produse, executate cu precizie și materiale de cea mai înaltă calitate.</p>
+  </div>
+
+  <div class="services-grid" id="services-grid">
+    <!-- Cards injected by JS below -->
+  </div>
+</section>
+
+<!-- ══════════════════════════════ DE CE NOI ══════════════════════════════ -->
+<section class="why-us" id="despre">
+  <div class="why-us-left reveal">
+    <p class="section-label">De Ce MetalPro</p>
+    <h2 class="section-title">Calitate care rezistă decenii</h2>
+    <p>Fiecare proiect este unic. Lucrăm cu materiale premium, respectăm termenele și oferim garanție pe toată gama de produse. De la garduri simple la automatizări complexe — suntem partenerul tău de încredere.</p>
+    <div class="stats-row">
+      <div class="stat-item">
+        <span class="stat-value">500+</span>
+        <span class="stat-label">Proiecte Finalizate</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">15</span>
+        <span class="stat-label">Ani Experiență</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">100%</span>
+        <span class="stat-label">Clienți Mulțumiți</span>
+      </div>
+    </div>
+  </div>
+  <div class="why-us-right reveal">
+    <div class="feature-item">
+      <div class="feature-icon">🏗️</div>
+      <h3 class="feature-title">Montaj Profesional</h3>
+      <p class="feature-desc">Echipă specializată, transport și montaj inclus în ofertă.</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🛡️</div>
+      <h3 class="feature-title">Garanție 5 Ani</h3>
+      <p class="feature-desc">Garantăm calitatea execuției și a materialelor utilizate.</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">📐</div>
+      <h3 class="feature-title">Măsurători Gratuite</h3>
+      <p class="feature-desc">Venim la fața locului pentru consultanță și măsurători fără costuri.</p>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">⚡</div>
+      <h3 class="feature-title">Livrare Rapidă</h3>
+      <p class="feature-desc">Termene respectate și execuție rapidă fără să compromitem calitatea.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ CONTACT ══════════════════════════════ -->
+<section class="quote-section" id="contact">
+  <div class="quote-left reveal">
+    <p class="section-label">Contactează-ne</p>
+    <h2 class="section-title">Solicită o ofertă gratuită</h2>
+    <p>Completează formularul și te contactăm în maxim 24 de ore cu o ofertă personalizată. Consultanță gratuită și măsurători la fața locului.</p>
+    <div class="contact-info">
+      <div class="contact-item">
+        <span class="contact-item-icon">📞</span>
+        <div class="contact-item-text">
+          <strong>Telefon</strong>
+          +40 745 123 456
         </div>
-      </section>
-
-      {/* Values Grid */}
-      <section className="py-16 lg:py-24 bg-card border-y border-border">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <span className="text-primary text-xs uppercase tracking-[0.3em] font-semibold">
-            Valori
-          </span>
-          <h2 className="mt-4 text-3xl lg:text-5xl font-bold uppercase tracking-tight mb-16">
-            De Ce Să Alegi<br /><span className="text-primary">Max Acoperișuri</span>
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
-            {values.map((v, i) => (
-              <motion.div
-                key={v.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-card p-8 lg:p-10"
-              >
-                <v.icon className="w-8 h-8 text-primary mb-6" />
-                <h3 className="font-bold text-lg uppercase mb-3">{v.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{v.desc}</p>
-              </motion.div>
-            ))}
-          </div>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-icon">✉️</span>
+        <div class="contact-item-text">
+          <strong>Email</strong>
+          office@metalpro.ro
         </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-16 lg:py-24 text-center">
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="text-3xl lg:text-5xl font-black uppercase tracking-tight mb-6">
-            Pregătit Să<br /><span className="text-primary">Începem?</span>
-          </h2>
-          <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-            Contactează-ne pentru o evaluare gratuită și o ofertă adaptată proiectului tău.
-          </p>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-10 py-5 text-sm uppercase tracking-[0.15em] font-bold hover:bg-primary/80 transition-all"
-          >
-            Contactează-ne
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-icon">📍</span>
+        <div class="contact-item-text">
+          <strong>Adresă</strong>
+          Str. Industriei 14, București
         </div>
-      </section>
-    </>
-  );
-}
+      </div>
+    </div>
+  </div>
+  <div class="reveal">
+    <form class="quote-form" onsubmit="handleFormSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Nume complet</label>
+          <input type="text" id="name" placeholder="Ion Popescu" required/>
+        </div>
+        <div class="form-group">
+          <label for="phone">Telefon</label>
+          <input type="tel" id="phone" placeholder="07xx xxx xxx" required/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="email@exemplu.ro"/>
+      </div>
+      <div class="form-group">
+        <label for="service">Serviciu dorit</label>
+        <select id="service">
+          <option value="">Selectează serviciul...</option>
+          <option>Confecții Metalice</option>
+          <option>Uși Garaj</option>
+          <option>Garduri Tablă Cutată</option>
+          <option>Garduri Lemn</option>
+          <option>Garduri Panouri Stil Jaluzea</option>
+          <option>Bariere Control Acces</option>
+          <option>Garduri Șipcă Metalică</option>
+          <option>Garduri Fier Forjat</option>
+          <option>Garduri Metalice</option>
+          <option>Garduri Plasă Bordurată</option>
+          <option>Balustrade</option>
+          <option>Automatizare Porți</option>
+          <option>Garduri Beton - BCA</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Detalii proiect</label>
+        <textarea id="message" placeholder="Descrieți pe scurt proiectul dvs. (dimensiuni aproximative, locație, preferințe...)"></textarea>
+      </div>
+      <button type="submit" class="form-submit">Trimite Cererea →</button>
+    </form>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ FOOTER ══════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Metal<span>Pro</span></div>
+      <p class="footer-brand-desc">Soluții complete pentru garduri și confecții metalice. Calitate premium, executare profesionistă, livrare rapidă în toată România.</p>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Servicii</p>
+      <ul>
+        <li><a href__="#servicii">Garduri Metalice</a></li>
+        <li><a href__="#servicii">Garduri Lemn</a></li>
+        <li><a href__="#servicii">Fier Forjat</a></li>
+        <li><a href__="#servicii">Automatizare Porți</a></li>
+        <li><a href__="#servicii">Balustrade</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Companie</p>
+      <ul>
+        <li><a href__="#despre">Despre Noi</a></li>
+        <li><a href__="#servicii">Portofoliu</a></li>
+        <li><a href__="#contact">Contact</a></li>
+        <li><a href__="#contact">Cerere Ofertă</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <p class="footer-col-title">Contact</p>
+      <ul>
+        <li><a href__="tel:+40745123456">+40 745 123 456</a></li>
+        <li><a href__="mailto:office@metalpro.ro">office@metalpro.ro</a></li>
+        <li><a href__="#">București, România</a></li>
+        <li><a href__="#">Lun–Vin: 08:00–18:00</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2024 MetalPro. Toate drepturile rezervate.</span>
+    <span>Confecții Metalice & Garduri Premium</span>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════ MODAL ══════════════════════════════ -->
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal-box" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <h3 class="modal-title" id="modal-title">Titlu</h3>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <img id="modal-img" src="" alt="" class="modal-img"/>
+    <div class="modal-body">
+      <p id="modal-desc"></p>
+      <a href__="#contact" class="modal-cta" onclick="closeModal()">Solicită Ofertă →</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── DATA ──
+  const services = [
+    {
+      title: "Confecții Metalice",
+      desc: "Construcții metalice personalizate realizate cu precizie inginerească și estetică rafinată. De la structuri portante la elemente decorative complexe — executăm orice proiect la cele mai înalte standarde.",
+      img: "https://media.base44.com/images/public/69e8afe87bb0f0fcee925841/0db99970e_generated_image.png"
+    },
+    {
+      title: "Uși Garaj",
+      desc: "Porți de garaj integrate perfect în arhitectura casei. Combină securitatea maximă cu estetica modernă, disponibile în variante manuale sau automatizate cu telecomandă.",
+      img: "https://media.base44.com/images/public/69e8afe87bb0f0fcee925841/66d1f105e_generated_image.png"
+    },
+    {
+      title: "Garduri Tablă Cutată",
+      desc: "Rezistență industrială redefinită prin linii minimaliste. Tabla cutată tratată anticoroziv oferă o barieră solidă și durabilă, potrivită atât pentru proprietăți rezidențiale cât și industriale.",
+      img: "https://media.base44.com/images/public/69e8afe87bb0f0fcee925841/127cce547_generated_image.png"
+    },
+    {
+      title: "Garduri Lemn",
+      desc: "Căldura lemnului natural susținută de o structură metalică ascunsă pentru durabilitate maximă. Combinația perfectă între estetica tradițională și rezistența modernă, fără întreținere excesivă.",
+      img: "https://media.base44.com/images/public/69e8afe87bb0f0fcee925841/aa547f6b7_generated_image.png"
+    },
+    {
+      title: "Garduri Panouri Stil Jaluzea",
+      desc: "Intimitate, ventilație și modernitate într-un singur produs. Lamelele orientabile creează un ecran arhitectural elegant care protejează proprietatea fără a bloca complet lumina.",
+      img: "https://media.base44.com/images/public/69e8afe87bb0f0fcee925841/ddd632e4c_generated_image.png"
+    },
+    {
+      title: "Bariere Control Acces",
+      desc: "Sisteme inteligente de control al accesului pentru parcări, firme și proprietăți rezidențiale. Fiabilitate maximă, viteză de operare ridicată și integrare cu sisteme de securitate existente.",
+      img: "https://media.base44.com/images/public/69e8afe87bb0f0fcee925841/2a8362822_generated_image.png"
+    },
+    {
+      title: "Garduri Șipcă Metalică",
+      desc: "Gardul clasic evoluției — șipcile din oțel galvanizat înlocuiesc lemnul cu o soluție permanentă, fără vopsiri anuale sau tratamente. Aspect estetic, preț accesibil, durată de viață nelimitată.",
+      img: "https://media.base44.com/images/public/69e8afe87bb0f0fcee925841/410c752c8_generated_image.png"
+    },
+    {
+      title: "Garduri Fier Forjat",
+      desc: "Meșteșugul tradițional al fierului forjat adaptat pentru proprietăți de lux contemporane. Fiecare element este realizat manual, creând piese unice care combină arta cu funcționalitatea.",
+      img: "https://media.base44.com/images/public/69e8afe87bb0f0fcee925841/2ba70a98f_generated_image.png"
+    },
+    {
+      title: "Garduri Metalice",
+      desc: "Protecție geometrică pură — garduri metalice cu design curat și simplu care asigură securitate maximă cu un aspect modern și ordonat. Disponibile în numeroase configurații și culori RAL.",
+      img: "https://media.base44.com/images/public/69e8afe87bb0f0fcee925841/364961ead_generated_image.png"
+    },
+    {
+      title: "Garduri Plasă Bordurată",
+      desc: "Soluție economică de securitate care menține transparența vizuală a terenului. Plasa bordurată zincată este ideală pentru delimitarea terenurilor agricole, industriale și rezidențiale.",
+      img: "https://media.base44.com/images/public/69e8afe87bb0f0fcee925841/243528169_generated_image.png"
+    },
+    {
+      title: "Balustrade",
+      desc: "Siguranța transformată în element de design — balustrade fluide din inox sau oțel vopsit pentru scări interioare, balcoane și terase. Fiecare proiect este adaptat la arhitectura spațiului.",
+      img: "https://media.base44.com/images/public/69e8afe87bb0f0fcee925841/785c40b61_generated_image.png"
+    },
+    {
+      title: "Automatizare Porți",
+      desc: "Tehnologie invizibilă care îți alimentează intrarea cu precizie silențioasă. Sisteme de automatizare pentru porți culisante și batante, cu telecomandă, senzori și integrare smart home.",
+      img: "https://media.base44.com/images/public/69e8afe87bb0f0fcee925841/42b11e7d5_generated_image.png"
+    },
+    {
+      title: "Garduri Beton - BCA",
+      desc: "Limita ultimă solidă — garduri din beton și BCA cu texturi monolitice pentru intimitate absolută și izolare fonică maximă. Soluția ideală pentru proprietăți care necesită protecție totală.",
+      img: "https://media.base44.com/images/public/69e8afe87bb0f0fcee925841/fa3d6e476_generated_image.png"
+    }
+  ];
+
+  // ── RENDER CARDS ──
+  function renderCards() {
+    const grid = document.getElementById('services-grid');
+    grid.innerHTML = services.map((s, i) => `
+      <div class="service-card reveal" onclick="openModal(${i})" style="transition-delay:${(i % 4) * 0.08}s">
+        <div style="position:relative;overflow:hidden;">
+          <img class="service-card-img" src="${s.img}" alt="${s.title}" loading="lazy"/>
+          <div class="service-card-overlay"></div>
+        </div>
+        <div class="service-card-body">
+          <p class="service-card-number">${String(i+1).padStart(2,'0')} / 13</p>
+          <h3 class="service-card-title">${s.title}</h3>
+          <p class="service-card-desc">${s.desc.substring(0,110)}...</p>
+          <span class="service-card-arrow">Detalii →</span>
+        </div>
+      </div>
+    `).join('');
+    observeReveal();
+  }
+
+  // ── MODAL ──
+  function openModal(idx) {
+    const s = services[idx];
+    document.getElementById('modal-title').textContent = s.title;
+    document.getElementById('modal-img').src = s.img;
+    document.getElementById('modal-img').alt = s.title;
+    document.getElementById('modal-desc').textContent = s.desc;
+    document.getElementById('modal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(e) {
+    if (!e || e.target === document.getElementById('modal')) {
+      document.getElementById('modal').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal({}); });
+
+  // ── SCROLL REVEAL ──
+  function observeReveal() {
+    const els = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('visible'); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    els.forEach(el => io.observe(el));
+  }
+
+  // ── FORM ──
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = '✓ Cerere trimisă!';
+    btn.style.background = '#2d7a2d';
+    setTimeout(() => { btn.textContent = 'Trimite Cererea →'; btn.style.background = ''; e.target.reset(); }, 3500);
+  }
+
+  // ── INIT ──
+  renderCards();
+  observeReveal();
+</script>
+</body>
+</html>
